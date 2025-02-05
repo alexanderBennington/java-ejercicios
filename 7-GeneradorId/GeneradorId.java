@@ -20,5 +20,7 @@ public class GeneradorId {
         String id = nombre.substring(0, 2).toUpperCase() + apellido.substring(0, 2).toUpperCase() + year.substring(2, 4) + numeroAleatorioFormateado ;
         
         System.out.println("ID: " + id);
+	//Puedo agregar trim() para espacios
+	scan.close();
     }
 }
