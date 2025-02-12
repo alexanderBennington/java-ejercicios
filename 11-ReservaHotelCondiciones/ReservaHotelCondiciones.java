@@ -35,5 +35,6 @@ public class ReservaHotelCondiciones {
                               Total: $%.2f
                               """, nombre, diasEstadia, (String.valueOf(vistaMar).equalsIgnoreCase("s")? "SI" : "NO"), costoSinVistaMar, total);
         }
+	scan.close();
     }
 }

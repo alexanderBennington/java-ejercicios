@@ -13,7 +13,7 @@ public class SistemaEnvios {
                 break;
             case "internacional": System.out.printf("Costo de envio: $%.2f", peso * 20.0f);
                 break;
-            default: System.out.printf("Destino no registrado");
+            default: {System.out.printf("Destino no registrado");}
                 break;
         }
         scan.close();
