@@ -6,10 +6,11 @@ public class PromedioCalificaciones {
         int numeroCalificaciones;
         int i;
         float[] calificaciones;
-        float promedio = 0;
+        float promedio;
         char continuar;
         boolean siContinuar = true;
         do{
+            promedio = 0;
             System.out.print("""
                                 *** Promedio de calificaciones ***
                                 Número de calificaciones: 
@@ -17,7 +18,7 @@ public class PromedioCalificaciones {
             numeroCalificaciones = Integer.parseInt((scan.nextLine()));
             calificaciones = new float[numeroCalificaciones]; 
             for(i = 0; i < numeroCalificaciones; i++){
-                System.out.print("\nIngrese la califiacion numero " + i + ": ");
+                System.out.print("\nIngrese la califiacion numero " + (i + 1) + ": ");
                 calificaciones[i] = Float.parseFloat(scan.nextLine());
                 promedio += calificaciones[i];
             }
@@ -25,6 +26,7 @@ public class PromedioCalificaciones {
             System.out.printf("\nEl promedio es de %.2f\n", promedio);
             System.out.println("Quieres calcular otro promedio? s/n: ");
             continuar = scan.next().charAt(0);
+            scan.nextLine();
             if(!String.valueOf(continuar).equalsIgnoreCase("s")){
                 siContinuar = false;
                 System.out.println("Hasta luego!");
