@@ -1,6 +1,7 @@
 import claseabstracta.*;
 import interfaz.*;
 import java.io.Serializable;
+import clases.*;
 
 public class PruebaAbstracta{
     static void imprimirDatos(String saludo, float numeroFloat, int... numeros){
@@ -23,7 +24,16 @@ public class PruebaAbstracta{
         persona.setNombre("Alex");
         persona.setEdad(12);
         System.out.println(persona);
+        var excepcion = new Excepciones();
+        try {
+            var resultado = Aritmetica.dividir(20, 0);
+            System.out.println("Resultado = " + resultado);
 
+        } catch (Exception e) {
+            System.err.println("Error: " + e);
+        } finally {
+            System.out.println("Se reviso la división");
+        }
     }
 }
 class Circulo extends FiguraGeometrica{
@@ -60,5 +70,17 @@ class Persona implements Serializable{
                 "nombre='" + this.nombre + '\'' +
                 ", edad=" + this.edad +
                 "}";
+    }
+}
+class Excepciones{
+    private int valor1 = 10;
+    private int valor2 = 0;
+    Excepciones(){
+        try {
+            var resultado = this.valor1 / this.valor2;
+            System.out.println("Resultado = " + resultado);
+        } catch (Exception e) {
+            System.err.println("Ocurrio un error: " + e);
+        }
     }
 }
