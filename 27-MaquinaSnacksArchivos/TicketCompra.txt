@@ -1,0 +1,5 @@
+1, Papas, 23.34
+2, Refresco, 17.45
+3, Sandwich, 12.32
+4, mandarina, 5.32
+5, chetos, 23.12
