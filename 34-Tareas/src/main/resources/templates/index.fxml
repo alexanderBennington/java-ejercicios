@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="743.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alexander.tareas.controlador.IndexControlador">
+   <children>
+      <Label layoutX="435.0" layoutY="35.0" text="Sistema de Tareas" textFill="#1d0e7c">
+         <font>
+            <Font name="Microsoft JhengHei Bold" size="38.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tareaTabla" layoutX="628.0" layoutY="137.0" onMouseClicked="#cargarTareaFormulario" prefHeight="360.0" prefWidth="492.0">
+        <columns>
+          <TableColumn fx:id="idTareaColumna" prefWidth="79.0" text="ID" />
+          <TableColumn fx:id="tareaTareaColumna" prefWidth="192.0" text="Tarea" />
+            <TableColumn fx:id="responsableTareaColumna" minWidth="0.0" prefWidth="119.0" text="Responsable" />
+            <TableColumn fx:id="estatusTareaColumna" prefWidth="100.0" text="Estatus" />
+        </columns>
+      </TableView>
+      <AnchorPane layoutX="76.0" layoutY="137.0" prefHeight="360.0" prefWidth="397.0">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" text="Nombre de la Tarea" textFill="#190ca8">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="117.0" text="Nombre del Responsable" textFill="#190ca8">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="219.0" text="Estatus de la Tarea" textFill="#190ca8">
+               <font>
+                   <Font name="Microsoft Sans Serif" size="24.0" />
+               </font></Label>
+            <TextField fx:id="tareaTareaTexto" layoutX="14.0" layoutY="41.0">
+               <font>
+                  <Font name="Microsoft YaHei" size="20.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="responsableTareaTexto" layoutX="15.0" layoutY="144.0">
+               <font>
+                  <Font name="Microsoft YaHei" size="20.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="estatusTareaTexto" layoutX="14.0" layoutY="246.0">
+               <font>
+                  <Font name="Microsoft YaHei" size="20.0" />
+               </font>
+            </TextField>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="76.0" layoutY="547.0" prefHeight="150.0" prefWidth="1045.0">
+         <children>
+            <Button fx:id="agregarTareaBoton" layoutX="60.0" layoutY="50.0" mnemonicParsing="false" onAction="#agregarTarea" style="-fx-background-color: #2c0986;" text="Agregar" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="modificarTareaBoton" layoutX="296.0" layoutY="50.0" mnemonicParsing="false" onAction="#modificarTarea" style="-fx-background-color: #167529;" text="Modificar" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="eliminarTareaBoton" layoutX="533.0" layoutY="50.0" mnemonicParsing="false" onAction="#eliminarTarea" style="-fx-background-color: #8a1313;" text="Eliminar" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="limpiarTareaBoton" layoutX="752.0" layoutY="50.0" mnemonicParsing="false" onAction="#limpiarFormulario" style="-fx-background-color: #e4dd10;" text="Limpiar Formulario" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+         </children></AnchorPane>
+   </children>
+</AnchorPane>
