@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import { NumericFormat } from 'react-number-format';
+import { Link } from "react-router-dom";
 
 export default function ListaEmpleados() {
 
@@ -13,11 +14,32 @@ export default function ListaEmpleados() {
     }, []);
 
     const cargarEmpleados = async () => {
-        const resultado = await axios.get(urlBase);
-        console.log('Resultado cargar empleado...')
+        try {
+            const resultado = await axios.get(urlBase);
+            console.log(resultado.data);
+            setEmpleados(resultado.data.empleados);
+        } catch (error) {
+            console.error("Error al cargar empleados:", error);
+        }
+    }
+
+    const eliminarEmpleado = async (id) => {
+        try{
+            await axios.delete(`${urlBase}/${id}`);
+            cargarEmpleados();
+        } catch (error) {
+            console.error("Error al eliminar empleado: ", error);
+        }
+    }
+    
+
+    /*
+    axios.get(urlBase)
+    .then(resultado => {
         console.log(resultado.data);
         setEmpleados(resultado.data.empleados);
-    }
+    });
+    */
 
     return (
         <div className="container">
@@ -51,7 +73,10 @@ export default function ListaEmpleados() {
                                     </td>
                                     <td>{empleado.fechaCreacion}</td>
                                     <td>{empleado.fechaActualizacion} </td>
-                                    <td></td>
+                                    <td className="text-center">
+                                        <Link to={`/editar/${empleado.idEmpleado}`} className="btn btn-warning btn-sm me-3">Editar</Link>
+                                        <button onClick={() => eliminarEmpleado(empleado.idEmpleado)} className="btn btn-danger btn-sm me-3">Eliminar</button>
+                                    </td>
                                 </tr>
                             ))
                         }

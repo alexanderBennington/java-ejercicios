@@ -9,7 +9,7 @@ public interface IEmpleadoServicio {
 
     Empleado buscarEmpleadosPorId(Integer idEmpleado);
 
-    void agregarEmpleado(Empleado empleado);
+    Empleado agregarEmpleado(Empleado empleado);
 
     void eliminarEmpleadoPorId(Integer idEmpleado);
 }

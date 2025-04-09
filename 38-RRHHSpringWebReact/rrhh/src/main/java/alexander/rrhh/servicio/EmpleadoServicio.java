@@ -30,14 +30,14 @@ public class EmpleadoServicio implements IEmpleadoServicio{
     }
 
     @Override
-    public void agregarEmpleado(Empleado empleado) {
-        empleadoRepositorio.save(empleado);
+    public Empleado agregarEmpleado(Empleado empleado) {
+        return empleadoRepositorio.save(empleado);
     }
 
     @Override
     public void eliminarEmpleadoPorId(Integer idEmpleado) {
         if (!empleadoRepositorio.existsById(idEmpleado)) {
-            throw new EmpleadoNoEncontradoException(idEmpleado);  // Puedes lanzar la misma excepción
+            throw new EmpleadoNoEncontradoException(idEmpleado);
         }
         empleadoRepositorio.deleteById(idEmpleado);
     }

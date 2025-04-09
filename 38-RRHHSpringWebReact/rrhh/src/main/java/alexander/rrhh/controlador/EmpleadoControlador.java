@@ -5,11 +5,9 @@ import alexander.rrhh.servicio.IEmpleadoServicio;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -48,5 +46,36 @@ public class EmpleadoControlador {
             logger.error("Error al obtener la lista de empleados", e);
             return ResponseEntity.status(500).body(Map.of("mensaje", "Error al obtener empleados"));
         }
+    }
+
+    @PostMapping("/empleados")
+    public ResponseEntity<Empleado> agregarEmpleado(@RequestBody Empleado empleado){
+        logger.info("Empleado a agregar: {}", empleado);
+        Empleado nuevoEmpleado = empleadoServicio.agregarEmpleado(empleado);
+        return ResponseEntity.status(HttpStatus.CREATED).body(nuevoEmpleado);
+    }
+
+    @GetMapping("/empleados/{id}")
+    public ResponseEntity<Empleado> obtenerEmpleadoPorId(@PathVariable int id){
+        Empleado empleado = empleadoServicio.buscarEmpleadosPorId(id);
+        return ResponseEntity.ok(empleado);
+    }
+
+    @PutMapping("/empleados/{id}")
+    public ResponseEntity<Empleado> actualizarEmpleado(@PathVariable int id, @RequestBody Empleado empleadoRecibido){
+        Empleado empleado = empleadoServicio.buscarEmpleadosPorId(id);
+        empleado.setNombre(empleadoRecibido.getNombre());
+        empleado.setDepartamento(empleadoRecibido.getDepartamento());
+        empleado.setSueldo(empleadoRecibido.getSueldo());
+        empleadoServicio.agregarEmpleado(empleado);
+        return ResponseEntity.ok(empleado);
+    }
+
+    @DeleteMapping("/empleados/{id}")
+    public ResponseEntity<Map<String, Boolean>> eliminarEmpleado(@PathVariable int id){
+        empleadoServicio.eliminarEmpleadoPorId(id);
+        Map<String, Boolean> respuesta = new HashMap<>();
+        respuesta.put("eliminado", Boolean.TRUE);
+        return ResponseEntity.ok(respuesta);
     }
 }
